@@ -71,7 +71,7 @@ const UserDetailsTable = ({ setUserData, setView, setEditView }) => {
             return (
               <tr className="text-black font-normal" key={user._id}>
                 <td>
-                  <img src={user.photo} alt="" />
+                  <img width={200} src={user.photo} alt="" />
                 </td>
                 <td>
                   <p>

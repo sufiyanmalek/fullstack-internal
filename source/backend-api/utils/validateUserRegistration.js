@@ -17,6 +17,7 @@ export const userValidator = (user) => {
     },
     emailId: Joi.string().email().required(),
     initiationDate: Joi.date().required(),
+    _id: Joi.optional(),
   });
   const validation = userObject.validate(user);
   return validation;

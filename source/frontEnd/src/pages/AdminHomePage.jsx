@@ -126,46 +126,58 @@ const AdminHomePage = () => {
   //edit user request
   const handleEdit = (e) => {
     e.preventDefault();
+    console.log(userData.initiationDate);
+    const difference = new Date() - new Date(userData.initiationDate);
+    console.log(difference);
+    if (difference > 5259600000) {
+      alert("Initiation date should not be less than 2 months from now ");
+    } else {
+      var data = new FormData();
 
-    var data = JSON.stringify({
-      fullName: {
-        firstName: userData.firstName,
-        middleName: userData.middleName,
-        lastName: userData.lastName,
-      },
-      photo: userData.photo,
-      address: {
-        flatNumber: userData.flatNumber,
-        area: userData.area,
-        city: userData.city,
-        pincode: userData.pincode,
-      },
-      emailId: userData.emailId,
-      initiationDate: userData.initiationDate,
-      _id: userData._id,
-    });
+      data.append(
+        "user",
+        JSON.stringify({
+          fullName: {
+            firstName: userData.firstName,
+            middleName: userData.middleName,
+            lastName: userData.lastName,
+          },
+          photo: userData.photo,
+          address: {
+            flatNumber: userData.flatNumber,
+            area: userData.area,
+            city: userData.city,
+            pincode: userData.pincode,
+          },
+          emailId: userData.emailId,
+          initiationDate: userData.initiationDate,
+          _id: userData._id,
+        })
+      );
+      data.append("image", imageData);
 
-    var config = {
-      method: "put",
-      url: "http://localhost:3000/user",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: data,
-    };
+      var config = {
+        method: "put",
+        url: "http://localhost:3000/user",
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        data: data,
+      };
 
-    axios(config)
-      .then(function (response) {
-        console.log(JSON.stringify(response.data));
-        setUserData();
-        setError();
-        setView(0);
-        setEditView(0);
-        alert("User Updated");
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+      axios(config)
+        .then(function (response) {
+          console.log(JSON.stringify(response.data));
+          setUserData();
+          setError();
+          setView(0);
+          setEditView(0);
+          alert("User Updated");
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
   };
   //get donation api hitter
   const showDonations = () => {

@@ -53,7 +53,6 @@ const UserRegistrationForm = ({
             <input
               type="file"
               name="photo"
-              disabled={editView == 1 ? true : false}
               onChange={handleImageChange}
               className="border border-black rounded-md mx-2"
             />
