@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 
-const Navbar = ({ setView, handleLogout }) => {
+const Navbar = ({ setView, handleLogout, showDonations }) => {
   const location = useLocation();
   return (
     <div className="w-[100vw]">
@@ -21,7 +21,13 @@ const Navbar = ({ setView, handleLogout }) => {
               </a>
             </li>
             <li className="mx-3 my-auto">
-              <a href="#" onClick={() => setView(2)}>
+              <a
+                href="#"
+                onClick={() => {
+                  setView(2);
+                  showDonations();
+                }}
+              >
                 Donations
               </a>
             </li>

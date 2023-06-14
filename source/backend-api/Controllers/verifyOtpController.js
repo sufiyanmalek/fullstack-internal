@@ -13,7 +13,6 @@ export const verifyOtp = async (req, res) => {
           const deleteOtp = await OtpModel.findByIdAndDelete(userOtp._id);
         }, 3000);
 
-        console.log(user);
         res.status(200).json({
           message: "otp Verified",
           user: user,

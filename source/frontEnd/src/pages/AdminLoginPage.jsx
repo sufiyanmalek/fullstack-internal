@@ -38,6 +38,7 @@ const AdminLoginPage = () => {
         console.log(error);
       });
   };
+
   return (
     <>
       <div className="border border-black text-center w-[20%] mx-auto mt-52 rounded-xl  bg-white">

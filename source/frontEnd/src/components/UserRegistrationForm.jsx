@@ -7,6 +7,8 @@ const UserRegistrationForm = ({
   handleEdit,
   editView,
   error,
+  handleImageChange,
+  imageData,
 }) => {
   return (
     <div
@@ -22,7 +24,6 @@ const UserRegistrationForm = ({
             <input
               type="text"
               name="firstName"
-              required
               className="border border-black rounded-md mx-2"
               onChange={handleChange}
               value={userData?.firstName || ""}
@@ -31,7 +32,6 @@ const UserRegistrationForm = ({
             <input
               type="text"
               name="middleName"
-              required
               onChange={handleChange}
               value={userData?.middleName || ""}
               className="border border-black rounded-md mx-2"
@@ -40,7 +40,6 @@ const UserRegistrationForm = ({
             <input
               type="text"
               name="lastName"
-              required
               onChange={handleChange}
               value={userData?.lastName || ""}
               className="border border-black rounded-md mx-2"
@@ -52,11 +51,10 @@ const UserRegistrationForm = ({
 
           <div className="border border-black p-5">
             <input
-              type="text"
+              type="file"
               name="photo"
-              required
-              onChange={handleChange}
-              value={userData?.photo || ""}
+              disabled={editView == 1 ? true : false}
+              onChange={handleImageChange}
               className="border border-black rounded-md mx-2"
             />
           </div>
@@ -69,7 +67,6 @@ const UserRegistrationForm = ({
             <input
               type="number"
               name="flatNumber"
-              required
               onChange={handleChange}
               value={userData?.flatNumber || ""}
               className="border border-black rounded-md mx-2"
@@ -78,7 +75,6 @@ const UserRegistrationForm = ({
             <input
               type="text"
               name="area"
-              required
               onChange={handleChange}
               value={userData?.area || ""}
               className="border border-black rounded-md mx-2"
@@ -87,7 +83,6 @@ const UserRegistrationForm = ({
             <input
               type="text"
               name="city"
-              required
               onChange={handleChange}
               value={userData?.city || ""}
               className="border border-black rounded-md mx-2"
@@ -98,7 +93,6 @@ const UserRegistrationForm = ({
               <input
                 type="text"
                 name="pincode"
-                required
                 onChange={handleChange}
                 value={userData?.pincode || ""}
                 className="border border-black rounded-md mx-2"
@@ -112,7 +106,6 @@ const UserRegistrationForm = ({
             <input
               type="email"
               name="emailId"
-              required
               onChange={handleChange}
               value={userData?.emailId || ""}
               className="border border-black rounded-md mx-2"
@@ -121,7 +114,6 @@ const UserRegistrationForm = ({
             <input
               className="border border-black p-1 rounded-lg"
               type="date"
-              required
               name="initiationDate"
               id="initiationDate"
               value={userData?.initiationDate || ""}
